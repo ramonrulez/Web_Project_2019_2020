@@ -1,15 +1,16 @@
+<?php include('registration.php') ?>
 <!DOCTYPE html>
 <html>
 	<head>
    	<title>Sign up Page</title>
-		<link rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" href="../css/styles.css">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
     <h1>Register</h1>
-    <?php include("php/errors.php"); ?>
-    <form name="register_form" method="post" action="php/registration.php">
+    <?php include("errors.php"); ?>
+    <form name="register_form" method="post" action="registration.php">
     	  Username
     	   <input type="text" name="username"><br>
     	  Email
