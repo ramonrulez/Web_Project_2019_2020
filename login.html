@@ -10,15 +10,18 @@
 		<h1>Login Page</h1>
 		<form name="login_form" action="php/login.php" method="post">
 		Username<br>
-			<input name = "username" type = "text" size = "25"><br><br>
+		<input name = "username" type = "text" size = "25"><br><br>
 		Password<br>
       	<input name = "password" type = "password" size = "25"><br><br>
-				<select name="user">
-						<option value="user">User</option>
-						<option value="admin">Admin</option>
-				</select><br><br>
-	      <input type = "submit" value = "Login">
-		   <input type = "reset" value = "Clear">
+			<select name="user">
+				<option value="user">User</option>
+				<option value="admin">Admin</option>
+			</select><br><br>
+	     <input name ="login_user" type = "submit" value = "Login">
+			<input type = "reset" value = "Clear">
+			<p>
+		 		Not yet a member? <a href="register.html">Register</a>
+			</p>
 		</form>
 	</body>
 </html>
