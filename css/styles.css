@@ -1,0 +1,25 @@
+body {
+	background-color: powderblue;
+}
+
+h1 {
+	text-align: center;
+}
+
+form {
+	text-align: center;
+}
+
+button {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.buttons {
+	text-align: center;
+}
+
+input {
+	align-items: center;
+}
