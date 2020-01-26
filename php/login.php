@@ -1,3 +1,4 @@
+<?php include("server.php") ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,19 +9,19 @@
 	</head>
 	<body>
 		<h1>Login Page</h1>
-		<form name="login_form" action="login_server.php" method="post">
-		Username<br>
-		<input name = "username" type = "text" size = "25"><br><br>
-		Password<br>
-      	<input name = "password" type = "password" size = "25"><br><br>
+		<form name="login_form" action="server.php" method="post">
+			Username<br>
+			<input name = "username" type = "text" size = "25"><br><br>
+			Password<br>
+	      	<input name = "password" type = "password" size = "25"><br><br>
 			<select name="user">
 				<option value="user">User</option>
 				<option value="admin">Admin</option>
 			</select><br><br>
-	     <input name ="login_user" type = "submit" value = "Login">
+		    <input name ="login_user" type = "submit" value = "Login">
 			<input type = "reset" value = "Clear">
 			<p>
-		 		Not yet a member? <a href="register.php">Register</a>
+				Not yet a member? <a href="register.php">Register</a>
 			</p>
 		</form>
 	</body>
