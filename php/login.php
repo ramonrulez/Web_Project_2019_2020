@@ -1,37 +1,27 @@
-<?php
-	include("config_db.php");
-	session_start();
-
-if (isset($_POST['login_user'])) {
-  $username = mysqli_real_escape_string($db, $_POST['username']);
-  $password = mysqli_real_escape_string($db, $_POST['password']);
-  $user = mysqli_real_escape_string($db, $_POST['user']);
-
-  if (empty($username)) {
-  	array_push($errors, "Username is required");
-  }
-  if (empty($password)) {
-  	array_push($errors, "Password is required");
-  }
-
-  if (count($errors) == 0) {
-
-	if ($user == "user") {
-		$password = md5($password);
-  		$query = "SELECT * FROM users WHERE username='$username' AND passcode='$password'";
-	}else {
-		$query = "SELECT * FROM admins WHERE username='$username' AND passcode='$password'";
-	}
-
-	$results = mysqli_query($db, $query);
-  	if (mysqli_num_rows($results) == 1) {
-		$_SESSION['username'] = $username;
-		$_SESSION['success'] = "You are now logged in";
-		header('location: index.php');
-	}else {
-  		array_push($errors, "Wrong username/password combination");
-  	}
-  }
-}
-
-?>
+<!DOCTYPE html>
+<html>
+	<head>
+   	<title>Login Page</title>
+		<link rel="stylesheet" href="../css/styles.css">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<h1>Login Page</h1>
+		<form name="login_form" action="login_server.php" method="post">
+		Username<br>
+		<input name = "username" type = "text" size = "25"><br><br>
+		Password<br>
+      	<input name = "password" type = "password" size = "25"><br><br>
+			<select name="user">
+				<option value="user">User</option>
+				<option value="admin">Admin</option>
+			</select><br><br>
+	     <input name ="login_user" type = "submit" value = "Login">
+			<input type = "reset" value = "Clear">
+			<p>
+		 		Not yet a member? <a href="register.php">Register</a>
+			</p>
+		</form>
+	</body>
+</html>
