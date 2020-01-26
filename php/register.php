@@ -1,4 +1,4 @@
-<?php include('registration.php') ?>
+<?php include('register_server.php') ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,7 +10,7 @@
 	<body>
     <h1>Register</h1>
     <?php include("errors.php"); ?>
-    <form name="register_form" method="post" action="registration.php">
+    <form name="register_form" method="post" action="register_server.php">
     	  Username
     	   <input type="text" name="username"><br>
     	  Email
@@ -21,7 +21,7 @@
     	   <input type="password" name="password_2"><br><br>
     	  <button type="submit" name="reg_user">Register</button>
     	<p>
-    		Already a member? <a href="login.html">Sign in</a>
+    		Already a member? <a href="login.php">Sign in</a>
     	</p>
     </form>
 	</body>
