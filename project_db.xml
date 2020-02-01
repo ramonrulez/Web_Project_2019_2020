@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 4.9.2
+- https://www.phpmyadmin.net
+-
+- Host: localhost
+- Generation Time: Feb 01, 2020 at 07:50 PM
+- Server version: 10.4.11-MariaDB
+- PHP Version: 7.4.1
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="project_db" collation="utf8_general_ci" charset="utf8">
+            <pma:table name="admins">
+                CREATE TABLE `admins` (
+                  `admin_id` int(3) NOT NULL AUTO_INCREMENT,
+                  `username` text NOT NULL,
+                  `passcode` varchar(24) NOT NULL,
+                  PRIMARY KEY (`admin_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="data">
+                CREATE TABLE `data` (
+                  `user_id` varchar(44) NOT NULL,
+                  `filename` text NOT NULL
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            </pma:table>
+            <pma:table name="users">
+                CREATE TABLE `users` (
+                  `user_id` varchar(44) NOT NULL,
+                  `username` varchar(100) NOT NULL,
+                  `passcode` varchar(100) NOT NULL,
+                  `email` varchar(100) NOT NULL,
+                  PRIMARY KEY (`user_id`) USING HASH
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'project_db'
+    -->
+    <database name="project_db">
+        <!-- Table admins -->
+        <table name="admins">
+            <column name="admin_id">1</column>
+            <column name="username">admin</column>
+            <column name="passcode">1234</column>
+        </table>
+        <!-- Table data -->
+        <table name="data">
+            <column name="user_id">Lu8cEMjJ95zdqczymfBkFw==</column>
+            <column name="filename">../uploads/setA.json</column>
+        </table>
+        <table name="data">
+            <column name="user_id">Lu8cEMjJ95zdqczymfBkFw==</column>
+            <column name="filename">../uploads/setB.json</column>
+        </table>
+        <!-- Table users -->
+        <table name="users">
+            <column name="user_id">1ibTwRcsqd9MlL2EkjNGN987Md54gbYA6dDS5N37fP8=</column>
+            <column name="username">user_1</column>
+            <column name="passcode">81dc9bdb52d04dc20036dbd8313ed055</column>
+            <column name="email">user_1@gmail.com</column>
+        </table>
+        <table name="users">
+            <column name="user_id">bngLxdqe+Z9SI2PcCOmT34bPYt3YKnE5SdutFyrze2s=</column>
+            <column name="username">user_4</column>
+            <column name="passcode">fcea920f7412b5da7be0cf42b8c93759</column>
+            <column name="email">user_4@gmail.com</column>
+        </table>
+        <table name="users">
+            <column name="user_id">fsAA4rACTQbf/83p8whVKDIj1OIGhsU+TuuGdyNJM6U=</column>
+            <column name="username">user_5</column>
+            <column name="passcode">25d55ad283aa400af464c76d713c07ad</column>
+            <column name="email">user_5@gmail.com</column>
+        </table>
+        <table name="users">
+            <column name="user_id">gm8K9bfvT4mG3D8d/IyTrE+QNZQMZM4GlHxwprhvygs=</column>
+            <column name="username">user_2</column>
+            <column name="passcode">827ccb0eea8a706c4c34a16891f84e7b</column>
+            <column name="email">user_2@gmail.com</column>
+        </table>
+        <table name="users">
+            <column name="user_id">Lu8cEMjJ95zdqczymfBkFw==</column>
+            <column name="username">test_user</column>
+            <column name="passcode">14ab1a23c2c2dd3210dd54d7ed55eb5f</column>
+            <column name="email">test@gmail.com</column>
+        </table>
+        <table name="users">
+            <column name="user_id">u4WjGbccO5MCDy2tH9fJjG1PYwmwNpOg6znEjuczzy8=</column>
+            <column name="username">user_3</column>
+            <column name="passcode">e10adc3949ba59abbe56e057f20f883e</column>
+            <column name="email">user_3@gmail.com</column>
+        </table>
+    </database>
+</pma_xml_export>
