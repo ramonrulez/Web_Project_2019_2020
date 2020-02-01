@@ -47,11 +47,12 @@
 
         <div class="upload">
             <h3>Upload a Json file</h3>
-            <div id="mapid">
+            <div id="mapid" style="width: 90%; height: 300px; margin: auto"></div>
                 <script>
-                    let mymap = L.map('mapid').setView([51.505, -0.09], 13);
-                </script>
-            </div>
+                    var mymap = L.map('mapid').setView([38.230462, 21.753150], 15);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?', {attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}).addTo(mymap);
+
+                </script><br>
             <form action="upload_file.php" method="POST" enctype="multipart/form-data">
                 <input type="file" name="u_file">
                 <input type="submit" value="Upload">
