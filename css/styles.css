@@ -33,3 +33,7 @@ input {
   border-radius: 5px;
   text-align: center;
 }
+
+#mapid { 
+	height: 180px;
+}

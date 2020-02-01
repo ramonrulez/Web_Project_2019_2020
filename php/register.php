@@ -11,14 +11,10 @@
 	    <h1>Register</h1>
 	    <?php include("errors.php"); ?>
 	    <form name="register_form" method="post" action="server.php">
-	    	Username
-	    	<input type="text" name="username"><br>
-	    	Email
-	    	<input type="email" name="email"><br>
-	    	Password
-	    	<input type="password" name="password_1"><br>
-	    	Confirm password
-	    	<input type="password" name="password_2"><br><br>
+	    	<input type="text" name="username" placeholder="Username"><br><br>
+	    	<input type="email" name="email" placeholder="Email"><br><br>
+	    	<input type="password" name="password_1" placeholder="Password" pattern="^(?=.*[a-z])(?=.+[A-Z])(?=.+[0-9])(?=.+[!@#$%^&*_=+-]).{8,}$"><br><br>
+	    	<input type="password" name="password_2" placeholder="Retype Password"><br><br>
 	    	<button type="submit" name="reg_user">Register</button>
 	    	<p>
 				Already a member? <a href="login.php">Login</a>

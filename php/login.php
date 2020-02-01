@@ -10,10 +10,8 @@
 	<body>
 		<h1>Login Page</h1>
 		<form name="login_form" action="server.php" method="post">
-			Username<br>
-			<input name = "username" type = "text" size = "25"><br><br>
-			Password<br>
-	      	<input name = "password" type = "password" size = "25"><br><br>
+			<input name = "username" type = "text" size = "25" placeholder="Username"><br><br>
+	      	<input name = "password" type = "password" size = "25" placeholder="Password"><br><br>
 			<select name="user">
 				<option value="user">User</option>
 				<option value="admin">Admin</option>
