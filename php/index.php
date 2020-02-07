@@ -44,11 +44,11 @@
             	<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
             <?php endif ?>
         </div>
-
+        
         <div class="upload">
             <h3>Upload a Json file</h3>
             <div id="mapid" style="width: 90%; height: 300px; margin: auto"></div>
-                <script src="../js/upload_map.js"></script><br>
+                <script type="text/javascript" src="../js/upload_map.js"></script><br>
             <form action="upload_file.php" method="POST" enctype="multipart/form-data">
                 <input type="file" name="u_file">
                 <input type="submit" value="Upload">

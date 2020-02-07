@@ -26,6 +26,7 @@
 
     // $filename = $_FILES["u_file"]["name"];
     $target_dir = "../uploads/";
+    $filename = basename($_FILES["u_file"]["name"]);
     $target_file = $target_dir . basename($_FILES["u_file"]["name"]);
     // $target_path = 'localhost/Web_Project_2019-2020/uploads' . '/' . $filename ;
     $extension = pathinfo($_FILES["u_file"]["name"],PATHINFO_EXTENSION);
@@ -56,7 +57,7 @@
     // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["u_file"]["tmp_name"], $target_file)) {
-            $sql = "INSERT INTO data (user_id, filename) VALUES ('$user_id','$target_file')";
+            $sql = "INSERT INTO data (user_id, filename) VALUES ('$user_id','$filename')";
             if (mysqli_query($db, $sql)) {
                 echo "The file ". basename( $target_file). " has been uploaded.";
                 // echo "File uploaded successfully";
