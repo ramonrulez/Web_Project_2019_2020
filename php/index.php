@@ -44,7 +44,16 @@
             	<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
             <?php endif ?>
         </div>
-        
+
+        <div class="user_data">
+            <h3>User Data</h3>
+            <div id="user_score"></div>
+            <div id="user_entries_time"></div>
+            <div id="user_last_upload"></div>
+            <div id="user_leaderboard"></div>
+            <script type="text/javascript" src="../js/user_content.js"></script>
+        </div>
+
         <div class="upload">
             <h3>Upload a Json file</h3>
             <div id="mapid" style="width: 90%; height: 300px; margin: auto"></div>
