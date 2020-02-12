@@ -66,22 +66,6 @@ function userScore(json_file){
             datasets: [{
                 label: '% of Eco Travel',
                 data: [ecoOut[0], ecoOut[1], ecoOut[2], ecoOut[3], ecoOut[4], ecoOut[5], ecoOut[6], ecoOut[7], ecoOut[8], ecoOut[9], ecoOut[10], ecoOut[11]],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
                 borderWidth: 1
             }]
         },
