@@ -50,7 +50,7 @@
             <h3>Data deletion</h3>
             <script  src="../js/admin_content.js" type="text/javascript"></script>
             <div id="delete_data">
-                <button type="button" name="delete_db_data" onclick="dataDelete()">Delete</button>
+                <button type="button" name="delete_db_data" onclick="deleteDbData()">Delete</button>
             </div>
         </div>
 
