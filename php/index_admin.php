@@ -46,24 +46,12 @@
             <?php endif ?>
         </div>
 
-        <div class="user_data">
-            <h3>User Data</h3>
-            <div id="user_score"></div>
-            <canvas id="myChart" style="width: 90%; height: 300px; margin: auto"></canvas>
-            <div id="user_entries_time"></div>
-            <div id="user_last_upload"></div>
-            <div id="user_leaderboard"></div>
-            <script type="text/javascript" src="../js/user_content.js"></script>
-        </div>
-
-        <div class="upload">
-            <h3>Upload a Json file</h3>
-            <div id="mapid" style="width: 90%; height: 300px; margin: auto"></div>
-                <script type="text/javascript" src="../js/upload_map.js"></script><br>
-            <form action="upload_file.php" method="POST" enctype="multipart/form-data">
-                <input type="file" name="u_file">
-                <input type="submit" value="Upload">
-            </form>
+        <div class="delete_data">
+            <h3>Data deletion</h3>
+            <script  src="../js/admin_content.js" type="text/javascript"></script>
+            <div id="delete_data">
+                <button type="button" name="delete_db_data" onclick="dataDelete()">Delete</button>
+            </div>
         </div>
 
         <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>

@@ -75,15 +75,26 @@
             }else {
                 $query = "SELECT * FROM admins WHERE username='$username' AND passcode='$password'";
             }
-
-            $results = mysqli_query($db, $query);
-            if (mysqli_num_rows($results) == 1) {
-                $_SESSION['username'] = $username;
-                $_SESSION['success'] = "You are now logged in";
-                header('location: index.php');
-            }else {
-                array_push($errors, "Wrong username/password combination");
+            if ($user == "user") {
+                $results = mysqli_query($db, $query);
+                if (mysqli_num_rows($results) == 1) {
+                    $_SESSION['username'] = $username;
+                    $_SESSION['success'] = "You are now logged in";
+                    header('location: index.php');
+                }else {
+                    array_push($errors, "Wrong username/password combination");
+                }
+            }else{
+                $results = mysqli_query($db, $query);
+                if (mysqli_num_rows($results) == 1) {
+                    $_SESSION['username'] = $username;
+                    $_SESSION['success'] = "You are now logged in";
+                    header('location: index_admin.php');
+                }else {
+                    array_push($errors, "Wrong username/password combination");
+                }
             }
+
         }
     }
     include("errors.php");
