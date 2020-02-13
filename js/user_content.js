@@ -1,6 +1,6 @@
 //"locations":[{"timestampMs":"1443114623503","latitudeE7":382315600,"longitudeE7":217555312,"accuracy":24,"activity":[{"timestampMs":"1443114448125","activity":[{"type":"TILTING","confidence":100}]},{"timestampMs":"1443114491401","activity":[{"type":"UNKNOWN","confidence":39},{"type":"STILL","confidence":33},{"type":"IN_VEHICLE","confidence":23},{"type":"ON_FOOT","confidence":6},{"type":"WALKING","confidence":6}]}]}
 
-// Get data from Database
+// Get data from Database (for user)
 function getData(uFunction) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -14,7 +14,7 @@ function getData(uFunction) {
     xhttp.send();
 }
 
-// Get user's JSON file (Google)
+// Get user's JSON file (Google) (for user)
 function loadJson(filename, uFunction, databaseData) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -39,7 +39,6 @@ function userScore(json_file){
     var parJSON;
     var x
     let i = 0;
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     for ( i= 0; i< 12; i++){
         x = 11 - i;
@@ -57,7 +56,12 @@ function userScore(json_file){
     }else {
         document.getElementById("user_score").innerHTML = "Not data for this month!";
     }
+    userChart(dates, ecoOut);
+    return ecoOut[11];
+}
 
+function userChart(dates, ecoOut){
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
@@ -94,6 +98,43 @@ function userEntry(json_file){
 function lastUploadDate(json_file, databaseData){
     document.getElementById("user_last_upload").innerHTML = "The last file uploaded at " + databaseData.upload_date + ".";
 }
+
+function ecoLeaderboard(databaseData){
+
+    document.getElementById("user_leaderboard").innerHTML="user ecoLeaderboard";
+}
+
+function getUserData(uFunction, json_obj){
+    
+}
+
+// Get data from Database (for every other user)
+function getJsonObj(uFunction) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var json_obj = JSON.parse(this.responseText);
+            getUserData(uFunction, json_obj);
+        }
+    }
+    xhttp.open("GET","http://localhost/Web_Project_2019-2020/php/get_allusers_data.php",true);
+    xhttp.send();
+}
+
+// Get user's JSON file (Google) (for every other user)
+function loadJsonObj(filename, uFunction, databaseData) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var json_obj = JSON.parse(this.responseText);
+            uFunction(json_obj);
+        }
+    };
+    xhttp.open("POST", "http://localhost/Web_Project_2019-2020/uploads/" + filename ,true);
+    xhttp.overrideMimeType("application/json");
+    xhttp.send();
+}
+
 
 function monthJsonObj(date, json_file){
     var curY = date.getFullYear();
@@ -174,3 +215,4 @@ function ecoCalc (json_obj){
 getData(userScore);
 getData(userEntry);
 getData(lastUploadDate);
+getJsonObj(ecoLeaderboard);
