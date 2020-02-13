@@ -52,7 +52,11 @@
             <canvas id="myChart" style="width: 90%; height: 300px; margin: auto"></canvas>
             <div id="user_entries_time"></div>
             <div id="user_last_upload"></div>
-            <div id="user_leaderboard"></div>
+            <div>The Leaderboard is :</div>
+            <div id="user_leaderboard_0"></div>
+            <div id="user_leaderboard_1"></div>
+            <div id="user_leaderboard_2"></div>
+            <div id="user_position"></div>
             <script type="text/javascript" src="../js/user_content.js"></script>
         </div>
 

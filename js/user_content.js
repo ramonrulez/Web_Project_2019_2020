@@ -57,7 +57,8 @@ function userScore(json_file){
         document.getElementById("user_score").innerHTML = "Not data for this month!";
     }
     userChart(dates, ecoOut);
-    return ecoOut[11];
+    userPersent = ecoOut[11];
+    return userPersent;
 }
 
 function userChart(dates, ecoOut){
@@ -99,13 +100,67 @@ function lastUploadDate(json_file, databaseData){
     document.getElementById("user_last_upload").innerHTML = "The last file uploaded at " + databaseData.upload_date + ".";
 }
 
-function ecoLeaderboard(databaseData){
+function ecoLeaderboard(username, json_obj, times, count){
+    var dates = [];
+    // cur_date = new Date();
+    cur_date = new Date(2019 , 6, 15);
 
-    document.getElementById("user_leaderboard").innerHTML="user ecoLeaderboard";
+    var curY = cur_date.getFullYear();
+    var curM = cur_date.getMonth() + 1;
+    var ecoOut = 0;
+    var parJSON;
+    var x
+
+    parJSON = monthJsonObj(cur_date, json_obj);
+    if (parJSON !== 0){
+        ecoOut = ecoCalc(parJSON);
+    }else {
+        ecoOut = 0;
+    }
+
+    var userRes = new userResults(username, ecoOut);
+    var endThis=shortFunc(times,count,userRes);
+    if (endThis == 0){
+        resultsArray.sort(compare);
+        for (var i = 0; i < 3; i++) {
+            var lead = i + 1;
+            var whichLead = "user_leaderboard_" + i +"";
+            document.getElementById(whichLead).innerHTML= "" + "No" + lead + " = " + resultsArray[i].username + " : " + resultsArray[i].percent + "% " + "";
+        }
+    }
+}
+
+function compare(a, b){
+    const ecoA =  a.percent;
+    const ecoB =  b.percent;
+
+    let comparison = 0;
+    if (a.percent < b.percent){
+        comparison = 1;
+    }else if (a.percent > b.percent) {
+        comparison = -1
+    }
+    return comparison;
+}
+
+function userResults(user, ecoOut){
+    this.username = user;
+    this.percent = ecoOut;
+}
+
+function shortFunc(times, count, userRes){
+    resultsArray.push(userRes);
+    if (countPush.push(count) == times){
+        return 0;
+    }
 }
 
 function getUserData(uFunction, json_obj){
-    
+    var i = 0;
+    for (i in json_obj){
+        loadJsonObj(json_obj[i].filename, uFunction, json_obj[i].username, Object.keys(json_obj).length, i);
+    }
+    return 0;
 }
 
 // Get data from Database (for every other user)
@@ -122,19 +177,18 @@ function getJsonObj(uFunction) {
 }
 
 // Get user's JSON file (Google) (for every other user)
-function loadJsonObj(filename, uFunction, databaseData) {
+function loadJsonObj(filename, uFunction, username, times, i) {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             var json_obj = JSON.parse(this.responseText);
-            uFunction(json_obj);
+            uFunction(username, json_obj, times, i);
         }
     };
     xhttp.open("POST", "http://localhost/Web_Project_2019-2020/uploads/" + filename ,true);
     xhttp.overrideMimeType("application/json");
     xhttp.send();
 }
-
 
 function monthJsonObj(date, json_file){
     var curY = date.getFullYear();
@@ -212,6 +266,9 @@ function ecoCalc (json_obj){
     return out.toPrecision(3);
 }
 
+var resultsArray=[];
+var countPush=[];
+var userPersent = 0;
 getData(userScore);
 getData(userEntry);
 getData(lastUploadDate);
