@@ -58,6 +58,7 @@
 
         <div class="data_analysis">
             <h3>Data Analysis</h3>
+            <canvas id="percentage_chart" style="width: 90%; height: 300px; margin: auto"></canvas>
             <div id="record_percentage">
                 <div id="date_results"></div>
                 <div id="date_form">

@@ -75,6 +75,7 @@ function userScore(json_file, databaseData){
     let ecoOut = [];
     let parJSON;
     let x
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     for ( var i= 0; i< 12; i++){
         x = 11 - i;
@@ -92,21 +93,23 @@ function userScore(json_file, databaseData){
     }else {
         document.getElementById("user_score").innerHTML = "Not data for this month!";
     }
-    userChart(dates, ecoOut);
+    for (var i = 0; i < dates.length; i++) {
+        dates[i] = months[dates[i].getMonth()];
+    }
     myUserRes = new userResults(databaseData.username, ecoOut[11]);
+    userChart(dates, ecoOut, '% of Eco Travel', 'myChart');
 }
 
 // Chart of 12 months
-function userChart(dates, ecoOut){
-    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    var ctx = document.getElementById('myChart').getContext('2d');
+function userChart(labels, data, label, chartId){
+    var ctx = document.getElementById(chartId).getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: [ months[dates[0].getMonth()], months[dates[1].getMonth()], months[dates[2].getMonth()], months[dates[3].getMonth()], months[dates[4].getMonth()], months[dates[5].getMonth()], months[dates[6].getMonth()], months[dates[7].getMonth()], months[dates[8].getMonth()], months[dates[9].getMonth()], months[dates[10].getMonth()], months[dates[11].getMonth()] ],
+            labels: labels,
             datasets: [{
-                label: '% of Eco Travel',
-                data: [ecoOut[0], ecoOut[1], ecoOut[2], ecoOut[3], ecoOut[4], ecoOut[5], ecoOut[6], ecoOut[7], ecoOut[8], ecoOut[9], ecoOut[10], ecoOut[11]],
+                label: label,
+                data: data,
                 borderWidth: 1
             }]
         },
@@ -327,6 +330,9 @@ function dataAnalysis(json_obj){
     let curJSON = "";
     let endJSON = "";
     let parJSON = "";
+    let results = [];
+    let resultsActivity = [];
+    let resultsPercent = [];
 
     for (var i = yearfrom; i < yearuntil; i++) {
         monthBegin = new Date(i, monthfrom);
@@ -356,7 +362,15 @@ function dataAnalysis(json_obj){
     if (endJSON !== "") {
         curJSON = "{ \"locations\" : [" + endJSON + "]}";
         parJSON = JSON.parse(curJSON);
-        entryPercentage(parJSON);
+        results = entryPercentage(parJSON);
+        // for (var out of results) {
+        //     document.getElementById("record_percentage").innerHTML += out.activity + " : " + out.percent + " % <br>";
+        // }
+        for (var g in results) {
+            resultsActivity.push(results[g].activity);
+            resultsPercent.push(results[g].percent);
+        }
+        userChart(resultsActivity, resultsPercent, 'Percent of each activity', 'percentage_chart')
         return parJSON;
 
     }else {
@@ -493,11 +507,12 @@ function entryPercentage(json_obj){
     waysOfTransportation.push(transport);
     transport = new transWay("UNKNOWN", unknown.toPrecision(2), count);
     waysOfTransportation.push(transport);
-    waysOfTransportation.sort(compare)
-    for (var out of waysOfTransportation) {
-        document.getElementById("record_percentage").innerHTML += out.activity + " : " + out.percent + " % <br>";
-
-    }
+    // waysOfTransportation.sort(compare)
+    return waysOfTransportation;
+    // for (var out of waysOfTransportation) {
+    //     document.getElementById("record_percentage").innerHTML += out.activity + " : " + out.percent + " % <br>";
+    //
+    // }
 
 }
 
