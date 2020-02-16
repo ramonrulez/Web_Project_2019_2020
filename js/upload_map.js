@@ -1,3 +1,8 @@
+function seeMap(){
+    document.getElementById("mapid").style.width = "90%";
+    document.getElementById("mapid").style.height = "300px";
+}
+
 var mymap = L.map('mapid').setView([38.230462, 21.753150], 15);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?', {attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}).addTo(mymap);
